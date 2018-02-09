@@ -180,8 +180,8 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title" itemprop="headline">
                     
-                        <a class="link-unstyled" href="/2018/02/10/test/">
-                            test
+                        <a class="link-unstyled" href="/2018/02/10/git版本管理/">
+                            git版本管理
                         </a>
                     
                 </h1>
@@ -194,7 +194,7 @@
     
         <span>发布在 </span>
         
-    <a class="category-link" href="/categories/rrr/">rrr</a>
+    <a class="category-link" href="/categories/git/">git</a>
 
 
     
@@ -203,57 +203,36 @@
             </div>
             
                 <div class="postShorten-content" itemprop="articleBody">
-                    <h1 id="asdasd"><a href="#asdasd" class="headerlink" title="asdasd"></a>asdasd</h1>
-                    
-                        
-
-                    
-                    
-                        <p>
-                            <a href="/2018/02/10/test/#post-footer" class="postShorten-excerpt_link link">
-                                评论和共享
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/2018/02/09/hello-world/">
-                            1Hello World
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2018-02-09T22:34:10+08:00">
-	
-		    2月 09, 2018
-    	
-    </time>
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content" itemprop="articleBody">
-                    <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                    <h1 id="git版本管理"><a href="#git版本管理" class="headerlink" title="git版本管理"></a>git版本管理</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>开发、测试、发布阶段各分支作用及各分支更新合并流程</p>
+<h2 id="分支定义"><a href="#分支定义" class="headerlink" title="分支定义"></a>分支定义</h2><p><em>develop</em>：开发基础分支</p>
+<p><em>feature/[module]</em>：模块开发分支</p>
+<p><em>release/[xxx]</em>：模块测试分支</p>
+<p><em>stg</em>：上线前系统测试分支</p>
+<p><em>pre</em>：上线前正式环境测试分支</p>
+<p><em>master</em>：正式环境分支</p>
+<p><em>hotfix/[bug]</em>：正式环境bug修改分支</p>
+<h2 id="标签定义"><a href="#标签定义" class="headerlink" title="标签定义"></a>标签定义</h2><p><em>release_[版本号]</em>：正式环境发布tag</p>
+<h2 id="开发及开发测试阶段分支管理流程"><a href="#开发及开发测试阶段分支管理流程" class="headerlink" title="开发及开发测试阶段分支管理流程"></a>开发及开发测试阶段分支管理流程</h2><ul>
+<li>接到开发任务，从<em>develop</em>分支切除新模块开发分支<em>feature/[module]</em>。</li>
+<li>在<em>feature/[module]</em>分支上开始开发任务，并建立开发版本<em>release/[module]</em>。</li>
+<li>开发阶段结束，从<em>develop</em>分支切出<em>release/[module]</em>分支，提交给测试人员测试，测试人员在<em>release/[module]</em>分支测试出的bug，开发人员在<em>feature/[module]</em>分支上做bug修改，修改完成后合并<em>feature/[module]</em>分支到<em>release/[module]</em>分支。</li>
+<li><em>release/[module]</em>测试人员测试完毕后，将<em>release/[module]</em>分支合并到<em>stg</em>分支，测试人员在<em>stg</em>上做系统测试，测试人员在<em>stg</em>上测试出的bug，开发人员在<em>feature/[module]</em>分支上做bug修改，修改完成后合并<em>feature/[module]</em>分支到<em>release/[module]</em>分支，再合并<em>release/[module]</em>到<em>stg</em>分支。</li>
+<li><em>stg</em>测试完毕后，将<em>stg</em>分支合并到<em>pre</em>分支，运营部人员在pre上做上线前正式环境测试。</li>
+<li><em>pre</em>环境测试通过后，将<em>pre</em>分支合并到<em>master</em>分支上，发布<em>master</em>分支，标记tag：<em>release_[version]</em>，再将<em>master</em>分支合并到<em>develop</em>分支</li>
+</ul>
+<h2 id="上线后模块bug修改流程"><a href="#上线后模块bug修改流程" class="headerlink" title="上线后模块bug修改流程"></a>上线后模块bug修改流程</h2><ul>
+<li>接收到bug指派后，从master切出<em>hotfix/[bug]</em>分支，在<em>hotfix/[bug]</em>分支上做修改</li>
+<li>完成修改后，如果bug比较紧急，测试人员在<em>hotfix/[bug]</em>上验证bug修改情况，测试完毕合并<em>hotfix/[bug]</em>到master分支，再合并到<em>release/[version]</em>。如果bug不紧急，合并<em>hotfix/[bug]</em>到<em>release/[version]</em>，在<em>release/[version]</em>测试bug修复情况（此处version每周一个小版本，既在上个版本号第三位加1；每周不紧急bug在周五统一发布到master），<em>release/[version]</em>发布后合并到<em>develop</em>分支</li>
+<li><em>release/[module]</em>发布时，版本号第二位加1；<em>release/[version]</em>发布时，版本号与<em>version</em>相同，如果遇到<em>release/[module]</em>与<em>release/[version]</em>同时发布，则以<em>release/[module]</em>标记当前<em>master</em>的发布tag版本。</li>
+</ul>
+<blockquote>
+<p><em>hotfix/[bug]</em>可以起一个分支改多个bug，需要根据bug的难易程度、影响范围拿捏</p>
+</blockquote>
+<h2 id="上线后模块大功能调整"><a href="#上线后模块大功能调整" class="headerlink" title="上线后模块大功能调整"></a>上线后模块大功能调整</h2><ul>
+<li>流程与《开发及开发测试阶段分支管理流程》相同。</li>
+</ul>
+<h2 id="附："><a href="#附：" class="headerlink" title="附："></a>附：</h2><p><img src="https://koyodevil.gitbooks.io/git/content/assets/17111805739.jpeg" alt="版本管理"></p>
+<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><p><a href="https://www.gitbook.com/book/koyodevil/git/details" target="_blank" rel="noopener">git book</a></p>
 
                     
                         
@@ -261,7 +240,7 @@
                     
                     
                         <p>
-                            <a href="/2018/02/09/hello-world/#post-footer" class="postShorten-excerpt_link link">
+                            <a href="/2018/02/10/git版本管理/#post-footer" class="postShorten-excerpt_link link">
                                 评论和共享
                             </a>
                         </p>
