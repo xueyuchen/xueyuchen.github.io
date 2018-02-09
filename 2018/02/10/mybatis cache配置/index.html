@@ -6,25 +6,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="mycall的博客">
-    <title>git版本管理 - mycall的博客</title>
+    <title>mybatis cache配置 - mycall的博客</title>
     <meta name="author" content="陈学瑜">
     
     
     
-    <meta name="description" content="简介开发、测试、发布阶段各分支作用及各分支更新合并流程 分支定义develop：开发基础分支 feature/[module]：模块开发分支 release/[xxx]：模块测试分支 stg：上线前系统测试分支 pre：上线前正式环境测试分支 master：正式环境分支 hotfix/[bug]：正式环境bug修改分支 标签定义release_[版本号]：正式环境发布tag 开发及开发测试阶段分支">
-<meta name="keywords" content="git">
+    <meta name="description" content="已CourseMapper为例： 1、CourseMapper.xml文件在&amp;lt;mapper&amp;gt;标签内添加&amp;lt;cache/&amp;gt;标签 123&amp;lt;mapper namespace=&quot;top.ili.lex.course.repository.mybatis.CourseMapper&quot;&amp;gt;	&amp;lt;cache eviction=&quot;FIFO&quot; flushInterval=&quot;6000">
+<meta name="keywords" content="mybatis cache mysql">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="git版本管理">
-<meta property="og:url" content="http://yoursite.com/2018/02/10/git版本管理/index.html">
+<meta property="og:title" content="mybatis cache配置">
+<meta property="og:url" content="http://yoursite.com/2018/02/10/mybatis cache配置/index.html">
 <meta property="og:site_name" content="mycall的博客">
-<meta property="og:description" content="简介开发、测试、发布阶段各分支作用及各分支更新合并流程 分支定义develop：开发基础分支 feature/[module]：模块开发分支 release/[xxx]：模块测试分支 stg：上线前系统测试分支 pre：上线前正式环境测试分支 master：正式环境分支 hotfix/[bug]：正式环境bug修改分支 标签定义release_[版本号]：正式环境发布tag 开发及开发测试阶段分支">
+<meta property="og:description" content="已CourseMapper为例： 1、CourseMapper.xml文件在&amp;lt;mapper&amp;gt;标签内添加&amp;lt;cache/&amp;gt;标签 123&amp;lt;mapper namespace=&quot;top.ili.lex.course.repository.mybatis.CourseMapper&quot;&amp;gt;	&amp;lt;cache eviction=&quot;FIFO&quot; flushInterval=&quot;6000">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:image" content="https://koyodevil.gitbooks.io/git/content/assets/17111805739.jpeg">
-<meta property="og:updated_time" content="2018-02-09T16:31:50.803Z">
+<meta property="og:updated_time" content="2018-02-09T16:32:28.912Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git版本管理">
-<meta name="twitter:description" content="简介开发、测试、发布阶段各分支作用及各分支更新合并流程 分支定义develop：开发基础分支 feature/[module]：模块开发分支 release/[xxx]：模块测试分支 stg：上线前系统测试分支 pre：上线前正式环境测试分支 master：正式环境分支 hotfix/[bug]：正式环境bug修改分支 标签定义release_[版本号]：正式环境发布tag 开发及开发测试阶段分支">
-<meta name="twitter:image" content="https://koyodevil.gitbooks.io/git/content/assets/17111805739.jpeg">
+<meta name="twitter:title" content="mybatis cache配置">
+<meta name="twitter:description" content="已CourseMapper为例： 1、CourseMapper.xml文件在&amp;lt;mapper&amp;gt;标签内添加&amp;lt;cache/&amp;gt;标签 123&amp;lt;mapper namespace=&quot;top.ili.lex.course.repository.mybatis.CourseMapper&quot;&amp;gt;	&amp;lt;cache eviction=&quot;FIFO&quot; flushInterval=&quot;6000">
     
     
         
@@ -184,7 +182,7 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            git版本管理
+            mybatis cache配置
         </h1>
     
     
@@ -197,7 +195,7 @@
     
         <span>发布在 </span>
         
-    <a class="category-link" href="/categories/git/">git</a>
+    <a class="category-link" href="/categories/mybatis/">mybatis</a>
 
 
     
@@ -208,36 +206,14 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>开发、测试、发布阶段各分支作用及各分支更新合并流程</p>
-<h2 id="分支定义"><a href="#分支定义" class="headerlink" title="分支定义"></a>分支定义</h2><p><em>develop</em>：开发基础分支</p>
-<p><em>feature/[module]</em>：模块开发分支</p>
-<p><em>release/[xxx]</em>：模块测试分支</p>
-<p><em>stg</em>：上线前系统测试分支</p>
-<p><em>pre</em>：上线前正式环境测试分支</p>
-<p><em>master</em>：正式环境分支</p>
-<p><em>hotfix/[bug]</em>：正式环境bug修改分支</p>
-<h2 id="标签定义"><a href="#标签定义" class="headerlink" title="标签定义"></a>标签定义</h2><p><em>release_[版本号]</em>：正式环境发布tag</p>
-<h2 id="开发及开发测试阶段分支管理流程"><a href="#开发及开发测试阶段分支管理流程" class="headerlink" title="开发及开发测试阶段分支管理流程"></a>开发及开发测试阶段分支管理流程</h2><ul>
-<li>接到开发任务，从<em>develop</em>分支切除新模块开发分支<em>feature/[module]</em>。</li>
-<li>在<em>feature/[module]</em>分支上开始开发任务，并建立开发版本<em>release/[module]</em>。</li>
-<li>开发阶段结束，从<em>develop</em>分支切出<em>release/[module]</em>分支，提交给测试人员测试，测试人员在<em>release/[module]</em>分支测试出的bug，开发人员在<em>feature/[module]</em>分支上做bug修改，修改完成后合并<em>feature/[module]</em>分支到<em>release/[module]</em>分支。</li>
-<li><em>release/[module]</em>测试人员测试完毕后，将<em>release/[module]</em>分支合并到<em>stg</em>分支，测试人员在<em>stg</em>上做系统测试，测试人员在<em>stg</em>上测试出的bug，开发人员在<em>feature/[module]</em>分支上做bug修改，修改完成后合并<em>feature/[module]</em>分支到<em>release/[module]</em>分支，再合并<em>release/[module]</em>到<em>stg</em>分支。</li>
-<li><em>stg</em>测试完毕后，将<em>stg</em>分支合并到<em>pre</em>分支，运营部人员在pre上做上线前正式环境测试。</li>
-<li><em>pre</em>环境测试通过后，将<em>pre</em>分支合并到<em>master</em>分支上，发布<em>master</em>分支，标记tag：<em>release_[version]</em>，再将<em>master</em>分支合并到<em>develop</em>分支</li>
-</ul>
-<h2 id="上线后模块bug修改流程"><a href="#上线后模块bug修改流程" class="headerlink" title="上线后模块bug修改流程"></a>上线后模块bug修改流程</h2><ul>
-<li>接收到bug指派后，从master切出<em>hotfix/[bug]</em>分支，在<em>hotfix/[bug]</em>分支上做修改</li>
-<li>完成修改后，如果bug比较紧急，测试人员在<em>hotfix/[bug]</em>上验证bug修改情况，测试完毕合并<em>hotfix/[bug]</em>到master分支，再合并到<em>release/[version]</em>。如果bug不紧急，合并<em>hotfix/[bug]</em>到<em>release/[version]</em>，在<em>release/[version]</em>测试bug修复情况（此处version每周一个小版本，既在上个版本号第三位加1；每周不紧急bug在周五统一发布到master），<em>release/[version]</em>发布后合并到<em>develop</em>分支</li>
-<li><em>release/[module]</em>发布时，版本号第二位加1；<em>release/[version]</em>发布时，版本号与<em>version</em>相同，如果遇到<em>release/[module]</em>与<em>release/[version]</em>同时发布，则以<em>release/[module]</em>标记当前<em>master</em>的发布tag版本。</li>
-</ul>
-<blockquote>
-<p><em>hotfix/[bug]</em>可以起一个分支改多个bug，需要根据bug的难易程度、影响范围拿捏</p>
-</blockquote>
-<h2 id="上线后模块大功能调整"><a href="#上线后模块大功能调整" class="headerlink" title="上线后模块大功能调整"></a>上线后模块大功能调整</h2><ul>
-<li>流程与《开发及开发测试阶段分支管理流程》相同。</li>
-</ul>
-<h2 id="附："><a href="#附：" class="headerlink" title="附："></a>附：</h2><p><img src="https://koyodevil.gitbooks.io/git/content/assets/17111805739.jpeg" alt="版本管理"></p>
-<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><p><a href="https://www.gitbook.com/book/koyodevil/git/details" target="_blank" rel="noopener">git book</a></p>
+            <p><strong>已CourseMapper为例：</strong></p>
+<p>1、<code>CourseMapper.xml</code>文件在<code>&lt;mapper&gt;</code>标签内添加<code>&lt;cache/&gt;</code>标签</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"top.ili.lex.course.repository.mybatis.CourseMapper"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">cache</span> <span class="attr">eviction</span>=<span class="string">"FIFO"</span> <span class="attr">flushInterval</span>=<span class="string">"60000"</span> <span class="attr">size</span>=<span class="string">"512"</span> <span class="attr">readOnly</span>=<span class="string">"false"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>2、<code>CourseMapper.java</code>文件添加<code>@CacheNamespaceRef</code>注解，指定参照缓存为<code>CourseMapper.clss</code>即CourseMapper.xml的缓存配置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> top.ili.lex.course.repository.mybatis;</span><br><span class="line"></span><br><span class="line"><span class="meta">@CacheNamespaceRef</span>(CourseMapper.class)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">CourseMapper</span> <span class="keyword">extends</span> <span class="title">CrudMapper</span>&lt;<span class="title">Course</span>&gt; </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>3、将需要缓存的model实现<code>Serializable</code>接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Course</span> <span class="keyword">implements</span> <span class="title">Serializable</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>4、注意：如果修改了mybatis查询出来的结果，修改后的状态会被缓存</p>
 
             
 
@@ -248,7 +224,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">标签</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/git/">git</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/mybatis-cache-mysql/">mybatis cache mysql</a>
 
             </div>
         
@@ -258,7 +234,8 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--disabled">
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/02/10/git版本管理/" data-tooltip="git版本管理" aria-label="上一篇: git版本管理">
                 
                     <i class="fa fa-angle-left" aria-hidden="true"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -266,8 +243,7 @@
             </li>
             <li class="post-action">
                 
-                    
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/02/10/mybatis cache配置/" data-tooltip="mybatis cache配置" aria-label="下一篇: mybatis cache配置">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -285,7 +261,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/02/10/git版本管理/" title="分享到 Facebook">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/02/10/mybatis cache配置/" title="分享到 Facebook">
                     <i class="fa fa-facebook-official" aria-hidden="true"></i>
                 </a>
             </li>
@@ -293,7 +269,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2018/02/10/git版本管理/" title="分享到 Twitter">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2018/02/10/mybatis cache配置/" title="分享到 Twitter">
                     <i class="fa fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -301,7 +277,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2018/02/10/git版本管理/" title="分享到 Google+">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2018/02/10/mybatis cache配置/" title="分享到 Google+">
                     <i class="fa fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -343,7 +319,8 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--disabled">
+                    
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/02/10/git版本管理/" data-tooltip="git版本管理" aria-label="上一篇: git版本管理">
                 
                     <i class="fa fa-angle-left" aria-hidden="true"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -351,8 +328,7 @@
             </li>
             <li class="post-action">
                 
-                    
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2018/02/10/mybatis cache配置/" data-tooltip="mybatis cache配置" aria-label="下一篇: mybatis cache配置">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -370,7 +346,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/02/10/git版本管理/" title="分享到 Facebook">
+                <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/02/10/mybatis cache配置/" title="分享到 Facebook">
                     <i class="fa fa-facebook-official" aria-hidden="true"></i>
                 </a>
             </li>
@@ -378,7 +354,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2018/02/10/git版本管理/" title="分享到 Twitter">
+                <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2018/02/10/mybatis cache配置/" title="分享到 Twitter">
                     <i class="fa fa-twitter" aria-hidden="true"></i>
                 </a>
             </li>
@@ -386,7 +362,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2018/02/10/git版本管理/" title="分享到 Google+">
+                <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2018/02/10/mybatis cache配置/" title="分享到 Google+">
                     <i class="fa fa-google-plus" aria-hidden="true"></i>
                 </a>
             </li>
@@ -413,7 +389,7 @@
             
             
             <li class="share-option">
-                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/02/10/git版本管理/">
+                <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/02/10/mybatis cache配置/">
                     <i class="fa fa-facebook-official" aria-hidden="true"></i><span>分享到 Facebook</span>
                 </a>
             </li>
@@ -421,7 +397,7 @@
             
             
             <li class="share-option">
-                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2018/02/10/git版本管理/">
+                <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://yoursite.com/2018/02/10/mybatis cache配置/">
                     <i class="fa fa-twitter" aria-hidden="true"></i><span>分享到 Twitter</span>
                 </a>
             </li>
@@ -429,7 +405,7 @@
             
             
             <li class="share-option">
-                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2018/02/10/git版本管理/">
+                <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://yoursite.com/2018/02/10/mybatis cache配置/">
                     <i class="fa fa-google-plus" aria-hidden="true"></i><span>分享到 Google+</span>
                 </a>
             </li>

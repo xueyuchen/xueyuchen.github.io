@@ -202,7 +202,7 @@
             </div>
             
                 <div class="postShorten-content" itemprop="articleBody">
-                    <h1 id="git版本管理"><a href="#git版本管理" class="headerlink" title="git版本管理"></a>git版本管理</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>开发、测试、发布阶段各分支作用及各分支更新合并流程</p>
+                    <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>开发、测试、发布阶段各分支作用及各分支更新合并流程</p>
 <h2 id="分支定义"><a href="#分支定义" class="headerlink" title="分支定义"></a>分支定义</h2><p><em>develop</em>：开发基础分支</p>
 <p><em>feature/[module]</em>：模块开发分支</p>
 <p><em>release/[xxx]</em>：模块测试分支</p>
@@ -240,6 +240,62 @@
                     
                         <p>
                             <a href="/2018/02/10/git版本管理/#post-footer" class="postShorten-excerpt_link link">
+                                评论和共享
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title" itemprop="headline">
+                    
+                        <a class="link-unstyled" href="/2018/02/10/mybatis cache配置/">
+                            mybatis cache配置
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time itemprop="datePublished" datetime="2018-02-10T00:01:05+08:00">
+	
+		    2月 10, 2018
+    	
+    </time>
+    
+        <span>发布在 </span>
+        
+    <a class="category-link" href="/categories/mybatis/">mybatis</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content" itemprop="articleBody">
+                    <p><strong>已CourseMapper为例：</strong></p>
+<p>1、<code>CourseMapper.xml</code>文件在<code>&lt;mapper&gt;</code>标签内添加<code>&lt;cache/&gt;</code>标签</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"top.ili.lex.course.repository.mybatis.CourseMapper"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">cache</span> <span class="attr">eviction</span>=<span class="string">"FIFO"</span> <span class="attr">flushInterval</span>=<span class="string">"60000"</span> <span class="attr">size</span>=<span class="string">"512"</span> <span class="attr">readOnly</span>=<span class="string">"false"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>2、<code>CourseMapper.java</code>文件添加<code>@CacheNamespaceRef</code>注解，指定参照缓存为<code>CourseMapper.clss</code>即CourseMapper.xml的缓存配置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> top.ili.lex.course.repository.mybatis;</span><br><span class="line"></span><br><span class="line"><span class="meta">@CacheNamespaceRef</span>(CourseMapper.class)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">CourseMapper</span> <span class="keyword">extends</span> <span class="title">CrudMapper</span>&lt;<span class="title">Course</span>&gt; </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>3、将需要缓存的model实现<code>Serializable</code>接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Course</span> <span class="keyword">implements</span> <span class="title">Serializable</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>4、注意：如果修改了mybatis查询出来的结果，修改后的状态会被缓存</p>
+
+                    
+                        
+
+                    
+                    
+                        <p>
+                            <a href="/2018/02/10/mybatis cache配置/#post-footer" class="postShorten-excerpt_link link">
                                 评论和共享
                             </a>
                         </p>
